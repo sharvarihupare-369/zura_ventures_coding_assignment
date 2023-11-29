@@ -15,8 +15,7 @@ function App() {
   return (
     <div className="App">
        {location.pathname === "/projects" || location.pathname==="/widget"  || location.pathname==="/accounts/settings"  ? "" : <Navbar/>}
-       {/* <Mainroutes/> */}
-       <EditTranscript/>
+       <Mainroutes/>
     </div>
   );
 }
