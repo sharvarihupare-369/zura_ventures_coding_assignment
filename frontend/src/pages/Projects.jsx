@@ -3,30 +3,28 @@ import { IoIosSettings } from "react-icons/io";
 import youtubeImage from "../Assets/youtube.png";
 import spotifyImage from "../Assets/spotify.png";
 import rssfield from "../Assets/rssfield.png";
-import cloudupload from '../Assets/cloud_upload.png';
+import cloudupload from "../Assets/cloud_upload.png";
 import { CreateProjectContext } from "../Contexts/CreateProjectContextProvider";
 import UploadModal from "../components/UploadModal";
 
-
 const Projects = () => {
-    const {isuploadOpen,setIsUploadOpen} = useContext(CreateProjectContext);
-    const [mediaName,setMediaName] = useState("");
+  const { isuploadOpen, setIsUploadOpen } = useContext(CreateProjectContext);
+  const [mediaName, setMediaName] = useState("");
 
-    const handleOpenYoutube = () => {
-        setIsUploadOpen(true);
-        setMediaName("Youtube")
-    }
+  const handleOpenYoutube = () => {
+    setIsUploadOpen(true);
+    setMediaName("Youtube");
+  };
 
-    const handleOpenSpotify = () => {
-        setIsUploadOpen(true);
-        setMediaName("Spotify")
-    }
+  const handleOpenSpotify = () => {
+    setIsUploadOpen(true);
+    setMediaName("Spotify");
+  };
 
-    const handleOpenRss = () => {
-        setIsUploadOpen(true);
-        setMediaName("RSS")
-    }
-
+  const handleOpenRss = () => {
+    setIsUploadOpen(true);
+    setMediaName("RSS");
+  };
 
   return (
     <div className="flex gap-12">
@@ -100,7 +98,7 @@ const Projects = () => {
 
       {/* Upload section */}
 
-      <div >
+      <div>
         <p className="text-[#7E22CE] text-[55px] text-700 font-bold">Upload</p>
 
         <div className="grid grid-cols-3 gap-10">
@@ -151,31 +149,30 @@ const Projects = () => {
               </div>
             </div>
           </div>
-
-
-
-       
         </div>
 
         <div className="text-center m-6">
-            <p className="text-[#999] text-2xl">or</p>
+          <p className="text-[#999] text-2xl">or</p>
         </div>
 
         <div className="border border-dashed border-[#999999] w-[100%] text-center p-5">
-            <div className="flex justify-center">
-                <img src={cloudupload} alt="cloud_upload" className="w-20" />
-            </div>
-            <p className="text-[#49454F] text-[20px] text-400">Select a file or drag and drop here (Podcast Media or Transcription Text)</p>
-            <p className="text-[#999] text-[12px] text-400">MP4, MOV, MP3, WAV, PDF, DOCX or TXT file </p>
-
-            <button className="border mt-5 border-[#7E22CE] border-[1.925px] rounded-full text-[#7E22CE] px-3 py-2 font-medium">Select File</button>
+          <div className="flex justify-center">
+            <img src={cloudupload} alt="cloud_upload" className="w-20" />
           </div>
+          <p className="text-[#49454F] text-[20px] text-400">
+            Select a file or drag and drop here (Podcast Media or Transcription
+            Text)
+          </p>
+          <p className="text-[#999] text-[12px] text-400">
+            MP4, MOV, MP3, WAV, PDF, DOCX or TXT file{" "}
+          </p>
 
-
+          <button className="border mt-5 border-[#7E22CE] border-[1.925px] rounded-full text-[#7E22CE] px-3 py-2 font-medium">
+            Select File
+          </button>
+        </div>
       </div>
-      {
-        isuploadOpen && <UploadModal mediaName={mediaName}/>
-      }
+      {isuploadOpen && <UploadModal mediaName={mediaName} />}
     </div>
   );
 };
