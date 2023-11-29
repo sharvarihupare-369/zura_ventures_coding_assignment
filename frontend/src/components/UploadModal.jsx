@@ -3,6 +3,7 @@ import { CreateProjectContext } from "../Contexts/CreateProjectContextProvider";
 import youtubeImage from "../Assets/youtube.png";
 import spotifyImage from "../Assets/spotify.png";
 import rssfield from "../Assets/rssfield.png";
+import ellipse from "../Assets/Ellipse.png";
 
 const UploadModal = ({ mediaName }) => {
   const { isuploadOpen, setIsUploadOpen } = useContext(CreateProjectContext);
@@ -44,7 +45,7 @@ const UploadModal = ({ mediaName }) => {
                     ? spotifyImage
                     : mediaName === "RSS"
                     ? rssfield
-                    : ""
+                    : mediaName ===  "media" ? ellipse : ""
                 }
               />
               <h1 className="text-xl font-semibold ">
@@ -58,7 +59,7 @@ const UploadModal = ({ mediaName }) => {
                 //   value={projectName}
                 //   onChange={(e)=>setProjectName(e.target.value)}
                 type="text"
-                className="mt-1 p-2 w-full border rounded-lg focus:outline-none focus:border-blue-500"
+                className="mt-1 p-2 w-full border border-[#000] rounded-lg focus:outline-none focus:border-[#000]"
               />
             </div>
 
@@ -68,7 +69,7 @@ const UploadModal = ({ mediaName }) => {
                 //   value={projectName}
                 //   onChange={(e)=>setProjectName(e.target.value)}
                 type="text"
-                className="mt-1 p-2 w-full border rounded-lg focus:outline-none focus:border-blue-500"
+                className="mt-1 p-2 w-full border border-[#000] rounded-lg focus:outline-none focus:border-[#000]"
               />
             </div>
           </div>
