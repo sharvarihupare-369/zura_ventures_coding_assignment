@@ -9,8 +9,8 @@ function App() {
   return (
     <div className="App">
        <Navbar/>
-       {/* <Mainroutes/> */}
-       <HomPage2/>
+       <Mainroutes/>
+       {/* <HomPage2/> */}
     </div>
   );
 }

@@ -4,11 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
+import CreateProjectContextProvider from './Contexts/CreateProjectContextProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
+    <CreateProjectContextProvider>
     <App />
+     </CreateProjectContextProvider>
     </BrowserRouter>
 );
 
