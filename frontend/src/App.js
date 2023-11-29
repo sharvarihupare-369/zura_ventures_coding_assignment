@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div className="App">
-       {location.pathname === "/projects" || location.pathname==="/widget" ? "" : <Navbar/>}
+       {location.pathname === "/projects" || location.pathname==="/widget"  || location.pathname==="/accounts/settings"  ? "" : <Navbar/>}
        <Mainroutes/>
      
     </div>

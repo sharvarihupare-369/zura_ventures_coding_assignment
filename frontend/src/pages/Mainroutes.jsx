@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import Home from './Home'
 import Projects from './Projects'
 import Widgets from './Widgets'
+import Account from './Account'
 
 const Mainroutes = () => {
   return (
@@ -11,6 +12,7 @@ const Mainroutes = () => {
             <Route path='/' element={<Home/>} />
             <Route path='/projects' element={<Projects/>} />
             <Route path='/widget' element={<Widgets/>} />
+            <Route path='/accounts/settings' element={<Account/>} />
         </Routes>
     </div>
   )
