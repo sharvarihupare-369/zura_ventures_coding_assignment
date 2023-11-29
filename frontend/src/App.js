@@ -13,11 +13,9 @@ function App() {
 
   return (
     <div className="App">
-       {location.pathname === "/projects" || location.pathname==="/" ? "" : <Navbar/>}
-       {/* <Mainroutes/> */}
-       {/* <HomPage2/> */}
-       {/* <Sidebar/> */}
-       <SampleProject/>
+       {location.pathname === "/projects" || location.pathname==="/widget" ? "" : <Navbar/>}
+       <Mainroutes/>
+     
     </div>
   );
 }
