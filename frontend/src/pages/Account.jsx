@@ -1,19 +1,39 @@
 import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import { CiSaveUp2 } from "react-icons/ci";
+import { FaCamera } from "react-icons/fa";
 
 const Account = () => {
   let loginDetails =
     JSON.parse(localStorage.getItem("lama-login-details")) || "";
-  console.log(loginDetails);
+  // console.log(loginDetails);
+  const profileImage = localStorage.getItem("lama-profilePicture") || "";
+  console.log(profileImage);
   const [name, setName] = useState(loginDetails?.username);
-
+  const [image, setImage] = useState("");
+  const [hoverIcon, setHoverIcon] = useState(false);
   const handleSaveName = () => {
     const updatedLoginDetails = { ...loginDetails, username: name };
     localStorage.setItem(
       "lama-login-details",
       JSON.stringify(updatedLoginDetails)
     );
+  };
+
+  const handleSaveImage = () => {
+    localStorage.setItem("lama-profilePicture", image);
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImage(reader.result);
+        handleSaveImage();
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
@@ -27,11 +47,40 @@ const Account = () => {
         </p>
 
         <div className="flex  items-center gap-10 mt-10">
-          <div className="flex items-center w-[15%]">
+          <div
+            onMouseEnter={() => setHoverIcon(true)}
+            onMouseLeave={() => setHoverIcon(false)}
+            className="flex items-center w-[15%]"
+          >
             <img
               className="h-25 rounded-full object-cover"
-              src="https://bit.ly/sage-adebayo"
+              src={image || "https://bit.ly/sage-adebayo"}
               alt="User Avatar"
+            />
+            {hoverIcon && (
+              <label
+                htmlFor="file-input"
+                className="absolute top-0 left-0 w-full h-full flex items-center justify-center cursor-pointer"
+              >
+                {/* <FaCamera 
+                
+                style={{
+                  color: "rgb(55, 71, 79)",
+                    fontSize: "30px",
+                    position: "relative",
+                    opacity: "0.6",
+                    cursor: "pointer",
+                }} */}
+                {/* /> */}
+              </label>
+            )}
+
+            <input
+              id="file-input"
+              type="file"
+              accept="image/*"
+              style={{ display: "none" }}
+              onChange={handleImageChange}
             />
           </div>
           <div className="w-[35%]">
