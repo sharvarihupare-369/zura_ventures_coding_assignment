@@ -49,7 +49,7 @@ axios.patch(`https://zura-ventures-backend.onrender.com/upload/edit/${id}`,paylo
 
 export const deleteupload = (id) => (dispatch) => {
   dispatch({type:PROJECT_UPLOAD_REQUEST})
-axios.delete(`https://zura-ventures-backend.onrender.com/upload/${id}`).then((res)=>{
+axios.delete(`https://zura-ventures-backend.onrender.com/upload/delete/${id}`).then((res)=>{
   console.log(res)
   dispatch({type:DELETE_PROJECT_UPLOADS})
 }).catch((err)=>{

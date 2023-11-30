@@ -35,7 +35,7 @@ const EditTranscript = () => {
   },[isEdited])
 
   if(isLoading){
-    <Loader/>
+   return <Loader/>
   }
 
 

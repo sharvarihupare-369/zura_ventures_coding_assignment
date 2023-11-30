@@ -1,32 +1,38 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CreateProjectContext } from "../Contexts/CreateProjectContextProvider";
 import youtubeImage from "../Assets/youtube.png";
 import spotifyImage from "../Assets/spotify.png";
 import rssfield from "../Assets/rssfield.png";
 import ellipse from "../Assets/Ellipse.png";
-import { useDispatch } from "react-redux";
-import { createUpload } from "../redux/uploads/action";
+import { useDispatch, useSelector } from "react-redux";
+import { createUpload, getuploads } from "../redux/uploads/action";
 
 const UploadModal = ({ mediaName }) => {
   const { isuploadOpen, setIsUploadOpen } = useContext(CreateProjectContext);
   const projectId = localStorage.getItem("projectId");
-  const [name,setName] = useState("");
-  const [description,setDescription] = useState("");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
   const dispatch = useDispatch();
+  const { isUploaded } = useSelector((store) => store.uploadReducer);
 
-
-  const handleUpload = () =>{
+  const handleUpload = () => {
     const uploadFile = {
       projectId,
       name,
-      description
-    }
+      description,
+    };
 
     dispatch(createUpload(uploadFile));
     setName("");
     setDescription("");
-    setIsUploadOpen(false)
-  }
+    setIsUploadOpen(false);
+  };
+
+  useEffect(() => {
+    if (isUploaded) {
+      getuploads();
+    }
+  }, [isUploaded]);
 
   return (
     <div className="fixed inset-0 overflow-y-auto">
@@ -66,7 +72,9 @@ const UploadModal = ({ mediaName }) => {
                     ? spotifyImage
                     : mediaName === "RSS"
                     ? rssfield
-                    : mediaName ===  "media" ? ellipse : ""
+                    : mediaName === "media"
+                    ? ellipse
+                    : ""
                 }
               />
               <h1 className="text-xl font-semibold ">
@@ -77,8 +85,8 @@ const UploadModal = ({ mediaName }) => {
             <div className="mb-4 mt-4">
               <label className="block text-md  text-gray">Name:</label>
               <input
-                  value={name}
-                  onChange={(e)=>setName(e.target.value)}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 type="text"
                 className="mt-1 p-2 w-full border border-[#000] rounded-lg focus:outline-none focus:border-[#000]"
               />
@@ -87,8 +95,8 @@ const UploadModal = ({ mediaName }) => {
             <div className="mb-4">
               <label className="block text-md  text-gray">Description:</label>
               <input
-                  value={description}
-                  onChange={(e)=>setDescription(e.target.value)}
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
                 type="text"
                 className="mt-1 p-2 w-full border border-[#000] rounded-lg focus:outline-none focus:border-[#000]"
               />
@@ -96,7 +104,10 @@ const UploadModal = ({ mediaName }) => {
           </div>
 
           <div className="flex justify-end gap-5 m-5">
-            <button onClick={handleUpload} className="px-7 py-2  bg-[#211935]  text-white rounded-md text-lg  text-extrabold">
+            <button
+              onClick={handleUpload}
+              className="px-7 py-2  bg-[#211935]  text-white rounded-md text-lg  text-extrabold"
+            >
               Upload
             </button>
           </div>

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useDebugValue, useEffect, useState } from "react";
 import { IoIosSettings } from "react-icons/io";
 import youtubeImage from "../Assets/youtube.png";
 import spotifyImage from "../Assets/spotify.png";
@@ -7,21 +7,42 @@ import cloudupload from "../Assets/cloud_upload.png";
 import { CreateProjectContext } from "../Contexts/CreateProjectContextProvider";
 import UploadModal from "../components/UploadModal";
 import Sidebar from "../components/Sidebar";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import EditTranscript from "./EditTranscript";
+import AlertDelete from "../components/AlertDelete";
+import { getuploads } from "../redux/uploads/action";
 
 const SampleProject = () => {
-
-  const { isuploadOpen, setIsUploadOpen,mediaName, setMediaName,isOpen,setIsOpen} = useContext(CreateProjectContext);    
-  const {alluploads} = useSelector(store=>store.uploadReducer);
+  const [deleteId, setDeleteId] = useState("");
+  const {
+    isuploadOpen,
+    setIsUploadOpen,
+    mediaName,
+    setMediaName,
+    isDeleteOpen,
+    setIsDeleteOpen,
+  } = useContext(CreateProjectContext);
+  const { alluploads } = useSelector((store) => store.uploadReducer);
+  const { isDeleted, isUploaded } = useSelector((store) => store.uploadReducer);
   const projectId = localStorage.getItem("projectId");
-  const navigate = useNavigate()
-  const filteredUploads = alluploads?.filter((el)=>el.projectId === projectId);
+  const navigate = useNavigate();
+  const filteredUploads = alluploads?.filter(
+    (el) => el.projectId === projectId
+  );
+  const dispatch = useDispatch();
 
   const handleEdit = (project) => {
-    navigate(`/edit/transcript/${project?.projectId}`)
-  }
+    navigate(`/edit/transcript/${project?.projectId}`);
+  };
+
+  const handleDelete = (id) => {
+    setDeleteId(id);
+    setIsDeleteOpen(true);
+  };
+
+  // console.log(deleteId)
+
   const handleOpenYoutube = () => {
     setIsUploadOpen(true);
     setMediaName("Youtube");
@@ -37,23 +58,20 @@ const SampleProject = () => {
     setMediaName("media");
   };
 
+  useEffect(() => {
+    if (isUploaded) {
+      dispatch(getuploads());
+    }
+  }, [isUploaded]);
 
-     
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-
+  useEffect(() => {
+    if (isDeleted) {
+      dispatch(getuploads());
+    }
+  }, [isDeleted]);
 
   return (
     <div className="flex gap-20">
-    {/* // <div className="w-[20%]">
-    //  <Sidebar/>
-    // </div> */}
-
       {/* Upload section */}
 
       <div>
@@ -62,8 +80,7 @@ const SampleProject = () => {
         </p>
 
         <div className="grid grid-cols-3 gap-10">
-
-        <div
+          <div
             onClick={handleOpenYoutube}
             className="cursor-pointer mt-[50px] border  border-[#999999] shadow-[0px 0px 0px 0px rgba(0, 0, 0, 0.06), 1.18953px 2.37906px 5.94764px 0px rgba(0, 0, 0, 0.06), 4.75811px 9.51622px 10.70575px 0px rgba(0, 0, 0, 0.05), 10.70575px 21.41151px 14.27434px 0px rgba(0, 0, 0, 0.03), 19.03245px 38.0649px 16.65339px 0px rgba(0, 0, 0, 0.01), 29.7382px 58.28688px 19.03245px 0px rgba(0, 0, 0, 0.00);
           ] rounded-[10px] inline-block px-5 py-5"
@@ -78,7 +95,6 @@ const SampleProject = () => {
               </div>
             </div>
           </div>
-        
 
           <div
             onClick={handleOpenSpotify}
@@ -137,33 +153,43 @@ const SampleProject = () => {
               </thead>
               <tbody className="text-center">
                 {/* map goes here */}
-                
-                {
-            filteredUploads?.map((el)=>{
-              const uploadDate = new Date(el?.created_at);
-              const formattedDate = uploadDate.toLocaleDateString("en-GB",{
-                day : "numeric",
-                month : "short",
-                year : "2-digit"
-              });
-              const formattedTime = uploadDate.toLocaleTimeString("en-GB",{
-                hour: "2-digit",
-                minute : "2-digit"
-              })
 
-              return  <tr>
-              <td  className="py-2 px-4">{el?.name}</td>
-                  <td className="py-2 px-4">{formattedDate} | {formattedTime}</td>
-                  <td className="py-2 px-4">Done</td>
-                  <td className="py-2 px-4">
-                    <button className="mr-2 font-medium" onClick={()=>handleEdit(el)}>Edit</button>
-                    <button className="text-red-400 font-medium" onClick={openModal}>Delete</button>
-                  </td>
-                  </tr>
-              
-              })
-             }
-                
+                {filteredUploads?.map((el) => {
+                  const uploadDate = new Date(el?.created_at);
+                  const formattedDate = uploadDate.toLocaleDateString("en-GB", {
+                    day: "numeric",
+                    month: "short",
+                    year: "2-digit",
+                  });
+                  const formattedTime = uploadDate.toLocaleTimeString("en-GB", {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  });
+
+                  return (
+                    <tr>
+                      <td className="py-2 px-4">{el?.name}</td>
+                      <td className="py-2 px-4">
+                        {formattedDate} | {formattedTime}
+                      </td>
+                      <td className="py-2 px-4">Done</td>
+                      <td className="py-2 px-4">
+                        <button
+                          className="mr-2 font-medium"
+                          onClick={() => handleEdit(el)}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          className="text-red-400 font-medium"
+                          onClick={() => handleDelete(el?._id)}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
@@ -173,9 +199,7 @@ const SampleProject = () => {
       </div>
       {isuploadOpen && <UploadModal mediaName={mediaName} />}
 
-      {/* {openEdit && selectedProject &&  (
-        <EditTranscript project={selectedProject} />
-      )} */}
+      {isDeleteOpen && <AlertDelete deleteId={deleteId} />}
     </div>
   );
 };

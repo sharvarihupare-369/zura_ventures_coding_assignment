@@ -5,7 +5,7 @@ const Sidebar = () => {
   const navigate = useNavigate();
   return (
     <div>
-      <div className="border border-gray   h-[100vh] p-2 bg-[#F3E8FF] ">
+      <div className="border border-gray h-[100vh] p-2 bg-[#F3E8FF] ">
         <div>
           <div>
             <div className="flex items-center gap-2 w-[10px]">
@@ -62,21 +62,21 @@ const Sidebar = () => {
                   Widget Configurations
                 </button>
               </div>
-          <div className="border border-gray-300 mt-2"></div>
+              <div className="border border-gray-300 mt-2"></div>
             </div>
           </div>
-        </div>
 
-        <div
-          className="border border-gray-300 mt-[370px]"
-          onClick={() => navigate("/accounts/settings")}
-        >
-          <div className="border border-gray-300  mb-2"></div>
-          <div className="flex items-center gap-3">
-            <div className="bg-[#CAC1D5]  p-1 rounded-full">
-              <IoIosSettings style={{ fontSize: "25px" }} />
+          <div className="border border-gray-300 mb-2"></div>
+          <div
+            className="absolute bottom-0 mb-3 w-[18%] p-2 rounded-full hover:bg-[#7E22CE] hover:text-white "
+            onClick={() => navigate("/accounts/settings")}
+          >
+            <div className="flex justify-left items-center gap-3 mt-[10] ">
+              <div className=" bg-[#CAC1D5]  rounded-full ">
+                <IoIosSettings style={{ fontSize: "25px" }} />
+              </div>
+              <p>Settings</p>
             </div>
-            <p>Settings</p>
           </div>
         </div>
       </div>

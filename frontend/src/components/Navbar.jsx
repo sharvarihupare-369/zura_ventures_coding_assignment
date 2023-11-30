@@ -27,7 +27,9 @@ const Navbar = () => {
             />
           </svg>
         </div>
-        <div id="logo" className="text-[#7E22CE] font-extrabold text-2xl">LAMA.</div>
+        <div id="logo" className="text-[#7E22CE] font-extrabold text-2xl">
+          LAMA.
+        </div>
       </div>
 
       <div className="flex items-center gap-3">
