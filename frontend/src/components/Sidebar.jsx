@@ -9,7 +9,7 @@ const Sidebar = () => {
         <div>
           <div>
             <div className="flex items-center gap-2 w-[10px]">
-              <div>
+              <div onClick={()=>navigate("/")}>
                 {/* <img src={arrowImg}/> */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +29,7 @@ const Sidebar = () => {
                   />
                 </svg>
               </div>
-              <div id="logo" className="text-[#7E22CE] font-bold text-2xl">
+              <div id="logo" onClick={()=>navigate("/")} className="text-[#7E22CE] font-bold text-2xl">
                 LAMA.
               </div>
             </div>
