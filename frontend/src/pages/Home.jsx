@@ -24,9 +24,9 @@ const Home = () => {
 
   // },[allProjects.length])
 
-  if(isLoading){
-    return <Loader/>
-   }
+  // if(isLoading){
+  //   return <Loader/>
+  //  }
 
   return (
     <div>
