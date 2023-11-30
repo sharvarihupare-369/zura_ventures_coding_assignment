@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import EditTranscript from "./EditTranscript";
 import AlertDelete from "../components/AlertDelete";
 import { getuploads } from "../redux/uploads/action";
+import Loader from "../components/Loader";
 
 const SampleProject = () => {
   const [deleteId, setDeleteId] = useState("");
@@ -24,7 +25,7 @@ const SampleProject = () => {
     setIsDeleteOpen,
   } = useContext(CreateProjectContext);
   const { alluploads } = useSelector((store) => store.uploadReducer);
-  const { isDeleted, isUploaded } = useSelector((store) => store.uploadReducer);
+  const { isDeleted, isUploaded,isLoading } = useSelector((store) => store.uploadReducer);
   const projectId = localStorage.getItem("projectId");
   const navigate = useNavigate();
   const filteredUploads = alluploads?.filter(
@@ -69,6 +70,10 @@ const SampleProject = () => {
       dispatch(getuploads());
     }
   }, [isDeleted]);
+
+   if(isLoading){
+    return <Loader/>
+   }
 
   return (
     <div className="flex gap-20">

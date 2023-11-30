@@ -12,11 +12,12 @@ import { Link } from "react-router-dom";
 import SampleProject from "./SampleProject";
 import { useDispatch, useSelector } from "react-redux";
 import { getuploads } from "../redux/uploads/action";
+import Loader from "../components/Loader";
 
 const Projects = () => {
   const { isuploadOpen, setIsUploadOpen } = useContext(CreateProjectContext);
   const { mediaName, setMediaName } = useContext(CreateProjectContext);
-  const { alluploads, isUploaded } = useSelector(
+  const { alluploads, isUploaded,isLoading } = useSelector(
     (store) => store.uploadReducer
   );
   const dispatch = useDispatch();
@@ -53,6 +54,10 @@ const Projects = () => {
   // useEffect(()=>{
 
   // },[alluploads.length])
+
+   if(isLoading){
+    return <Loader/>
+   }
 
   return (
     <div className="flex gap-20">

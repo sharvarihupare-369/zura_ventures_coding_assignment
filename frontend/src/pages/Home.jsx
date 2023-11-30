@@ -9,10 +9,11 @@ import { useDispatch, useSelector } from "react-redux";
 import HomPage2 from "./HomPage2";
 import { Link } from "react-router-dom";
 import landingImage from "../Assets/landingpageImage.webp";
+import Loader from "../components/Loader";
 
 const Home = () => {
   const { isModalOpen, setIsModalOpen } = useContext(CreateProjectContext);
-  const { allProjects } = useSelector((store) => store.projectReducer);
+  const { allProjects ,isLoading} = useSelector((store) => store.projectReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,6 +23,10 @@ const Home = () => {
   // useEffect(()=>{
 
   // },[allProjects.length])
+
+  if(isLoading){
+    return <Loader/>
+   }
 
   return (
     <div>

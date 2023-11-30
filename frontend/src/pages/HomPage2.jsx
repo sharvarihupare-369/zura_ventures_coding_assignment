@@ -5,10 +5,11 @@ import CreateProjectModal from "../components/CreateProjectModal";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getallProjects } from "../redux/createProjects/action";
+import Loader from "../components/Loader";
 
 const HomPage2 = () => {
   const { isModalOpen, setIsModalOpen } = useContext(CreateProjectContext);
-  const { allProjects } = useSelector((store) => store.projectReducer);
+  const { allProjects , isLoading} = useSelector((store) => store.projectReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -32,6 +33,10 @@ const HomPage2 = () => {
   // useEffect(()=>{
 
   // },[allProjects.length]);
+
+  if(isLoading){
+    return <Loader/>
+   }
 
   return (
     <div>
