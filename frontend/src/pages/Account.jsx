@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import { CiSaveUp2 } from "react-icons/ci";
 import { FaCamera } from "react-icons/fa";
+import Navbar2 from "../components/Navbar2";
 
 const Account = () => {
   let loginDetails =
@@ -44,6 +45,7 @@ const Account = () => {
         <Sidebar />
       </div>
       <div className="w-[80%]">
+      <Navbar2/>
         <p className="text-[#7E22CE] text-[40px] text-700 font-bold">
           Account Settings
         </p>
@@ -114,7 +116,27 @@ const Account = () => {
             />
           </div>
         </div>
+
+             <div className="mt-8">
+              <p className="font-bold text-[#7E22CE] text-[42px]">Subscriptions</p>
+             </div>
+
+             <div style={{background : "linear-gradient(90deg, #7E22CE 0.95%, #460281 99.9%)",boxShadow:"0px 0px 0px 0px rgba(0, 0, 0, 0.06), 0.71942px 1.43885px 3.59712px 0px rgba(0, 0, 0, 0.06), 2.8777px 5.7554px 6.47482px 0px rgba(0, 0, 0, 0.05), 6.47482px 12.94964px 8.63309px 0px rgba(0, 0, 0, 0.03), 11.51079px 23.02158px 10.07194px 0px rgba(0, 0, 0, 0.01), 17.98561px 35.2518px 11.51079px 0px rgba(0, 0, 0, 0.00)"}} className=" w-[93%] flex justify-between items-center p-6 rounded-md mt-7">
+          <p className="text-white text-[23px]">
+          You are currently on the Ques AI Basic Plan!
+          </p>
+          <button className="rounded-md text-[18px] text-[#7E22CE] font-bold bg-white px-3 py-1">
+          Upgrade
+          </button>
+        </div>
+        
+        <div className="mt-3">
+          <button className="text-red-500 font-bold underline  underline-offset-4">Cancel Subscription</button>
+        </div>
+
       </div>
+
+
     </div>
   );
 };
