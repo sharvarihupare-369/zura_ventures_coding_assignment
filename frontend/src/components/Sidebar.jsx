@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 import { IoIosSettings } from "react-icons/io";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 const Sidebar = () => {
   const navigate = useNavigate();
   return (
-   <div>
-     <div className="border border-gray   h-[100vh] p-2 bg-[#F3E8FF] ">
+    <div>
+      <div className="border border-gray   h-[100vh] p-2 bg-[#F3E8FF] ">
         <div>
           <div>
             <div className="flex items-center gap-2 w-[10px]">
@@ -39,7 +39,10 @@ const Sidebar = () => {
             </div>
 
             <div className="mt-[30px]">
-              <div onClick={()=>navigate("/uploads")} className="bg-[#E2D8EE] p-2 rounded-full hover:bg-[#7E22CE] hover:text-white">
+              <div
+                onClick={() => navigate("/uploads")}
+                className="bg-[#E2D8EE] p-2 rounded-full hover:bg-[#7E22CE] hover:text-white"
+              >
                 <button className="rounded-xl flex items-center gap-2">
                   <p className="bg-[#CAC1D5] w-8 p-1 rounded-full hover:bg-[#2C2C2C]">
                     1
@@ -48,7 +51,10 @@ const Sidebar = () => {
                 </button>
               </div>
 
-              <div onClick={()=>navigate("/widgets")} className="bg-[#E2D8EE] p-2 rounded-full mt-1 hover:bg-[#7E22CE] hover:text-white">
+              <div
+                onClick={() => navigate("/widgets")}
+                className="bg-[#E2D8EE] p-2 rounded-full mt-1 hover:bg-[#7E22CE] hover:text-white"
+              >
                 <button className="rounded-xl flex items-center gap-2">
                   <p className="bg-[#CAC1D5] w-8 p-1 rounded-full hover:bg-[#0f172a]">
                     2
@@ -56,25 +62,26 @@ const Sidebar = () => {
                   Widget Configurations
                 </button>
               </div>
-
-              <div className="border border-gray-300 mt-2"></div>
-            </div>
-          </div>
-
-          <div className="mt-60">
-            <div className="border border-gray-300  mb-2"></div>
-            <div className="flex items-center gap-3">
-              <div className="bg-[#CAC1D5]  p-1 rounded-full">
-                <IoIosSettings style={{ fontSize: "25px" }} />
-              </div>
-              <p>Settings</p>
+          <div className="border border-gray-300 mt-2"></div>
             </div>
           </div>
         </div>
+
+        <div
+          className="border border-gray-300 mt-[370px]"
+          onClick={() => navigate("/accounts/settings")}
+        >
+          <div className="border border-gray-300  mb-2"></div>
+          <div className="flex items-center gap-3">
+            <div className="bg-[#CAC1D5]  p-1 rounded-full">
+              <IoIosSettings style={{ fontSize: "25px" }} />
+            </div>
+            <p>Settings</p>
+          </div>
+        </div>
       </div>
+    </div>
+  );
+};
 
-   </div>
-  )
-}
-
-export default Sidebar
+export default Sidebar;

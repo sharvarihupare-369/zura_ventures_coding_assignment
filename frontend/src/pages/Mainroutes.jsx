@@ -5,6 +5,7 @@ import Projects from './Projects'
 import Widgets from './Widgets'
 import Account from './Account'
 import SampleProject from './SampleProject'
+import EditTranscript from './EditTranscript'
 
 const Mainroutes = () => {
   return (
@@ -14,6 +15,7 @@ const Mainroutes = () => {
             {/* <Route path='/projects' element={<Projects/>} /> */}
             <Route path='/uploads' element={<Projects/>} />
             <Route path='/widgets' element={<Widgets/>} />
+            <Route path='/edit/transcript/:projectId' element={<EditTranscript/>} />
             <Route path='/accounts/settings' element={<Account/>} />
         </Routes>
     </div>

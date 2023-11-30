@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="App">
-       {location.pathname === "/uploads" || location.pathname==="/widgets"  || location.pathname==="/accounts/settings"  ? "" : <Navbar/>}
+       {location.pathname === "/uploads" || location.pathname==="/widgets"  || location.pathname==="/accounts/settings" ? "" : <Navbar/>}
        <Mainroutes/>
     </div>
   );

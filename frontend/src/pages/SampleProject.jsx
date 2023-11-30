@@ -8,15 +8,20 @@ import { CreateProjectContext } from "../Contexts/CreateProjectContextProvider";
 import UploadModal from "../components/UploadModal";
 import Sidebar from "../components/Sidebar";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import EditTranscript from "./EditTranscript";
 
 const SampleProject = () => {
-  const { isuploadOpen, setIsUploadOpen } = useContext(CreateProjectContext);
-  const {mediaName, setMediaName} = useContext(CreateProjectContext);
+
+  const { isuploadOpen, setIsUploadOpen,mediaName, setMediaName,isOpen,setIsOpen} = useContext(CreateProjectContext);    
   const {alluploads} = useSelector(store=>store.uploadReducer);
   const projectId = localStorage.getItem("projectId");
-
+  const navigate = useNavigate()
   const filteredUploads = alluploads?.filter((el)=>el.projectId === projectId);
-  // console.log(filteredUploads)
+
+  const handleEdit = (project) => {
+    navigate(`/edit/transcript/${project?.projectId}`)
+  }
   const handleOpenYoutube = () => {
     setIsUploadOpen(true);
     setMediaName("Youtube");
@@ -31,6 +36,18 @@ const SampleProject = () => {
     setIsUploadOpen(true);
     setMediaName("media");
   };
+
+
+     
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+
   return (
     <div className="flex gap-20">
     {/* // <div className="w-[20%]">
@@ -134,24 +151,19 @@ const SampleProject = () => {
                 minute : "2-digit"
               })
 
- 
- 
               return  <tr>
               <td  className="py-2 px-4">{el?.name}</td>
                   <td className="py-2 px-4">{formattedDate} | {formattedTime}</td>
                   <td className="py-2 px-4">Done</td>
                   <td className="py-2 px-4">
-                    <button className="mr-2 font-medium">Edit</button>
-                    <button className="text-red-400 font-medium">Delete</button>
+                    <button className="mr-2 font-medium" onClick={()=>handleEdit(el)}>Edit</button>
+                    <button className="text-red-400 font-medium" onClick={openModal}>Delete</button>
                   </td>
                   </tr>
               
               })
              }
                 
-                
-
-               
               </tbody>
             </table>
           </div>
@@ -160,6 +172,10 @@ const SampleProject = () => {
         {/* Table ends */}
       </div>
       {isuploadOpen && <UploadModal mediaName={mediaName} />}
+
+      {/* {openEdit && selectedProject &&  (
+        <EditTranscript project={selectedProject} />
+      )} */}
     </div>
   );
 };
