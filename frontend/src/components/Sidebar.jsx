@@ -10,7 +10,7 @@ const Sidebar = () => {
           <div>
             <div className="flex items-center gap-2 w-[10px]">
               <div onClick={()=>navigate("/")}>
-                {/* <img src={arrowImg}/> */}
+             
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="30"

@@ -71,9 +71,9 @@ const SampleProject = () => {
     }
   }, [isDeleted]);
 
-   if(isLoading){
-    return <Loader/>
-   }
+  //  if(isLoading){
+  //   return <Loader/>
+  //  }
 
   return (
     <div className="flex gap-20">

@@ -9,11 +9,11 @@ import Loader from "../components/Loader";
 
 const HomPage2 = () => {
   const { isModalOpen, setIsModalOpen } = useContext(CreateProjectContext);
-  const { allProjects , isLoading} = useSelector((store) => store.projectReducer);
+  const { allProjects } = useSelector((store) => store.projectReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { alluploads } = useSelector((store) => store.uploadReducer);
+  const { alluploads ,isLoading} = useSelector((store) => store.uploadReducer);
   const projectId = localStorage.getItem("projectId");
   const filteredUploads = alluploads?.filter(
     (el) => el.projectId === projectId
@@ -34,10 +34,10 @@ const HomPage2 = () => {
 
   // },[allProjects.length]);
 
-  if(isLoading){
-    return <Loader/>
-   }
-
+ 
+//  if(isLoading){
+//     return <Loader/>
+//    }
   return (
     <div>
       <div className="flex justify-between m-3">
