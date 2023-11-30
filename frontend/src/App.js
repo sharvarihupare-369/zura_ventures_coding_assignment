@@ -11,10 +11,11 @@ import EditTranscript from './pages/EditTranscript';
 
 function App() {
   const location = useLocation();
+  const isEditTranscript = location.pathname.startsWith("/edit/transcript");
 
   return (
     <div className="App">
-       {location.pathname === "/uploads" || location.pathname==="/widgets"  || location.pathname==="/accounts/settings" ? "" : <Navbar/>}
+       {location.pathname === "/uploads" || location.pathname==="/widgets"  || location.pathname==="/accounts/settings" || isEditTranscript  ?  "" : <Navbar/>}
        <Mainroutes/>
     </div>
   );
