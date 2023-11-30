@@ -10,12 +10,16 @@ import HomPage2 from "./HomPage2";
 import { Link } from "react-router-dom";
 import landingImage from "../Assets/landingpageImage.webp";
 import Loader from "../components/Loader";
+import LoginDetails from "../components/LoginDetails";
 
 const Home = () => {
-  const { isModalOpen, setIsModalOpen } = useContext(CreateProjectContext);
-  const { allProjects ,isLoading} = useSelector((store) => store.projectReducer);
+  const { isModalOpen, setIsModalOpen, setShowLoginDetails, showLoginDetails } =
+    useContext(CreateProjectContext);
+  const { allProjects, isLoading } = useSelector(
+    (store) => store.projectReducer
+  );
   const dispatch = useDispatch();
-
+  const hasShownLoginDetails = localStorage.getItem("hasShownLoginDetails");
   useEffect(() => {
     dispatch(getallProjects());
   }, []);
@@ -27,6 +31,16 @@ const Home = () => {
   // if(isLoading){
   //   return <Loader/>
   //  }
+
+  useEffect(() => {
+    if (!hasShownLoginDetails) {
+      const timer = setTimeout(() => {
+        setShowLoginDetails(true);
+        localStorage.setItem("hasShownLoginDetails", "true");
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   return (
     <div>
@@ -80,6 +94,7 @@ const Home = () => {
 
       {/* Modal */}
       {isModalOpen && <CreateProjectModal />}
+      {showLoginDetails && <LoginDetails />}
     </div>
   );
 };

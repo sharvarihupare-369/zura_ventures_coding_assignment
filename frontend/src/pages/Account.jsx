@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
+import { CiSaveUp2 } from "react-icons/ci";
 
 const Account = () => {
+  let loginDetails =
+    JSON.parse(localStorage.getItem("lama-login-details")) || "";
+  console.log(loginDetails);
+  const [name, setName] = useState(loginDetails?.username);
+
+  const handleSaveName = () => {
+    const updatedLoginDetails = { ...loginDetails, username: name };
+    localStorage.setItem(
+      "lama-login-details",
+      JSON.stringify(updatedLoginDetails)
+    );
+  };
+
   return (
     <div className="flex gap-20">
       <div className="w-[20%]">
@@ -22,15 +36,26 @@ const Account = () => {
           </div>
           <div className="w-[35%]">
             <p className="font-bold text-[#3C3C3C]">User Name</p>
-            <input
-              placeholder="Enter Name"
-              className="w-[100%] p-1 border border-[#999999] rounded-[7px]"
-            />
+            <div className="flex items-center">
+              <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Enter Name"
+                className="w-[100%] p-1 border border-[#999999] rounded-[7px]"
+              />
+              <div
+                onClick={handleSaveName}
+                className="relative right-10 cursor-pointer"
+              >
+                <CiSaveUp2 style={{ fontSize: "30px", fontWeight: 700 }} />
+              </div>
+            </div>
           </div>
 
           <div className="w-[35%]">
             <p className="font-bold text-[#3C3C3C]">Email</p>
             <input
+              value={loginDetails?.email}
               placeholder="Enter Email"
               className="w-[100%] p-1 border border-[#999999] rounded-[7px]"
             />

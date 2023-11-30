@@ -108,7 +108,7 @@ const UploadModal = ({ mediaName }) => {
               onClick={handleUpload}
               className="px-7 py-2  bg-[#211935]  text-white rounded-md text-lg  text-extrabold"
             >
-              Upload
+              Save
             </button>
           </div>
         </div>

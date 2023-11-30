@@ -27,3 +27,7 @@ body {
       transform: rotate(360deg);
   }
   } 
+
+  #toggle:checked + label span {
+    transform: translateX(100%);
+  }

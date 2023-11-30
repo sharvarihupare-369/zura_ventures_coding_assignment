@@ -7,6 +7,8 @@ const CreateProjectContextProvider = ({ children }) => {
   const [isuploadOpen, setIsUploadOpen] = useState(false);
   const [mediaName, setMediaName] = useState("");
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const [showLoginDetails, setShowLoginDetails] = useState(false);
+
   return (
     <CreateProjectContext.Provider
       value={{
@@ -18,6 +20,8 @@ const CreateProjectContextProvider = ({ children }) => {
         setMediaName,
         isDeleteOpen,
         setIsDeleteOpen,
+        showLoginDetails,
+        setShowLoginDetails,
       }}
     >
       {children}
