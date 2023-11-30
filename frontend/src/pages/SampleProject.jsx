@@ -13,6 +13,8 @@ import EditTranscript from "./EditTranscript";
 import AlertDelete from "../components/AlertDelete";
 import { getuploads } from "../redux/uploads/action";
 import Loader from "../components/Loader";
+import Navbar from "../components/Navbar";
+import Navbar2 from "../components/Navbar2";
 
 const SampleProject = () => {
   const [deleteId, setDeleteId] = useState("");
@@ -78,7 +80,7 @@ const SampleProject = () => {
   return (
     <div className="flex gap-20">
       {/* Upload section */}
-
+      <Navbar2/>
       <div>
         <p className="text-[#7E22CE] text-[40px] text-700 font-bold">
           Sample Project

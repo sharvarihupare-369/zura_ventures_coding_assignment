@@ -8,9 +8,9 @@ const Account = () => {
     JSON.parse(localStorage.getItem("lama-login-details")) || "";
   // console.log(loginDetails);
   const profileImage = localStorage.getItem("lama-profilePicture") || "";
-  console.log(profileImage);
+  // console.log(profileImage);
   const [name, setName] = useState(loginDetails?.username);
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(profileImage  || "");
   const [hoverIcon, setHoverIcon] = useState(false);
   const handleSaveName = () => {
     const updatedLoginDetails = { ...loginDetails, username: name };
@@ -20,8 +20,10 @@ const Account = () => {
     );
   };
 
+  
+
   const handleSaveImage = () => {
-    localStorage.setItem("lama-profilePicture", image);
+    localStorage.setItem("lama-profilePicture",image);
   };
 
   const handleImageChange = (e) => {
@@ -52,11 +54,13 @@ const Account = () => {
             onMouseLeave={() => setHoverIcon(false)}
             className="flex items-center w-[15%]"
           >
+            <div className="rounded-full object-cover">
             <img
-              className="h-25 rounded-full object-cover"
+              className="rounded-full object-cover"
               src={image || "https://bit.ly/sage-adebayo"}
               alt="User Avatar"
             />
+            </div>
             {hoverIcon && (
               <label
                 htmlFor="file-input"

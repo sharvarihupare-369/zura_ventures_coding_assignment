@@ -13,6 +13,7 @@ import SampleProject from "./SampleProject";
 import { useDispatch, useSelector } from "react-redux";
 import { getuploads } from "../redux/uploads/action";
 import Loader from "../components/Loader";
+import Navbar2 from "../components/Navbar2";
 
 const Projects = () => {
   const { isuploadOpen, setIsUploadOpen } = useContext(CreateProjectContext);
@@ -25,6 +26,8 @@ const Projects = () => {
   const filteredUploads = alluploads?.filter(
     (el) => el.projectId === projectId
   );
+
+  
 
   const handleOpenYoutube = () => {
     setIsUploadOpen(true);
@@ -63,7 +66,9 @@ const Projects = () => {
     <div className="flex gap-20">
       <div className="w-[20%]">
         <Sidebar />
-      </div>
+       </div>
+
+
 
       {/* Upload section */}
 
@@ -71,7 +76,10 @@ const Projects = () => {
         <SampleProject />
       ) : (
         <div className="w-[70%]">
-          <p className="text-[#7E22CE] text-[40px] text-700 font-bold">
+         
+          <Navbar2  />
+
+          <p className="text-[#7E22CE] text-[38px] mt-8 text-700 font-bold">
             Upload
           </p>
 

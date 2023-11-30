@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Display from "../components/Display";
 import General from "../components/General";
+import Navbar2 from "../components/Navbar2";
 
 const Widgets = () => {
   const [config,setConfig] = useState("General");
@@ -13,6 +14,9 @@ const Widgets = () => {
       </div>
 
       <div className="w-[80%]">
+     
+       <Navbar2/>
+
         <p className="text-[#7E22CE] text-[35px] text-700 font-bold">
           Configuration
         </p>

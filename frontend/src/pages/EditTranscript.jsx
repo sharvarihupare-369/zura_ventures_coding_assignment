@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import { editAndUpload, getById, getuploads } from "../redux/uploads/action";
 import Loader from "../components/Loader";
 import { IoIosSearch } from "react-icons/io";
+import Navbar2 from "../components/Navbar2";
 
 const EditTranscript = () => {
   const { projectId } = useParams();
@@ -52,6 +53,7 @@ const EditTranscript = () => {
         <Sidebar />
       </div>
       <div className="w-[70%]">
+       <Navbar2/>
         <div className="flex justify-between items-center mt-10">
           <p className="text-[#7E22CE] text-[36px] text-700 font-bold">
             Edit Transcript
