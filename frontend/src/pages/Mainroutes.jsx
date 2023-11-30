@@ -4,14 +4,16 @@ import Home from './Home'
 import Projects from './Projects'
 import Widgets from './Widgets'
 import Account from './Account'
+import SampleProject from './SampleProject'
 
 const Mainroutes = () => {
   return (
     <div>
         <Routes>
             <Route path='/' element={<Home/>} />
-            <Route path='/projects' element={<Projects/>} />
-            <Route path='/widget' element={<Widgets/>} />
+            {/* <Route path='/projects' element={<Projects/>} /> */}
+            <Route path='/uploads' element={<Projects/>} />
+            <Route path='/widgets' element={<Widgets/>} />
             <Route path='/accounts/settings' element={<Account/>} />
         </Routes>
     </div>

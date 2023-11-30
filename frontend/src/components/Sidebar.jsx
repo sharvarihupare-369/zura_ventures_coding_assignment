@@ -1,6 +1,8 @@
 import React from 'react'
 import { IoIosSettings } from "react-icons/io";
+import { useNavigate } from 'react-router-dom';
 const Sidebar = () => {
+  const navigate = useNavigate();
   return (
    <div>
      <div className="border border-gray   h-[100vh] p-2 bg-[#F3E8FF] ">
@@ -37,7 +39,7 @@ const Sidebar = () => {
             </div>
 
             <div className="mt-[30px]">
-              <div className="bg-[#E2D8EE] p-2 rounded-full hover:bg-[#7E22CE] hover:text-white">
+              <div onClick={()=>navigate("/uploads")} className="bg-[#E2D8EE] p-2 rounded-full hover:bg-[#7E22CE] hover:text-white">
                 <button className="rounded-xl flex items-center gap-2">
                   <p className="bg-[#CAC1D5] w-8 p-1 rounded-full hover:bg-[#2C2C2C]">
                     1
@@ -46,7 +48,7 @@ const Sidebar = () => {
                 </button>
               </div>
 
-              <div className="bg-[#E2D8EE] p-2 rounded-full mt-1 hover:bg-[#7E22CE] hover:text-white">
+              <div onClick={()=>navigate("/widgets")} className="bg-[#E2D8EE] p-2 rounded-full mt-1 hover:bg-[#7E22CE] hover:text-white">
                 <button className="rounded-xl flex items-center gap-2">
                   <p className="bg-[#CAC1D5] w-8 p-1 rounded-full hover:bg-[#0f172a]">
                     2

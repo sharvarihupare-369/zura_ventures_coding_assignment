@@ -6,9 +6,9 @@ export const CreateProjectContext = createContext();
 const CreateProjectContextProvider = ({children }) => {
   const [isModalOpen,setIsModalOpen] = useState(false);
   const [isuploadOpen,setIsUploadOpen] = useState(false);
-
+  const [mediaName,setMediaName] = useState("")
   return (
-    <CreateProjectContext.Provider value={{isModalOpen,setIsModalOpen,isuploadOpen,setIsUploadOpen}}>
+    <CreateProjectContext.Provider value={{isModalOpen,setIsModalOpen,isuploadOpen,setIsUploadOpen,mediaName,setMediaName}}>
       {children }
     </CreateProjectContext.Provider>
   )

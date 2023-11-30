@@ -6,13 +6,13 @@ import arrowImg from "../Assets/arrow.png";
 const Navbar = () => {
   return (
     <div className="flex justify-between items-center m-5">
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2">
         <div>
           {/* <img src={arrowImg}/> */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="53"
-            height="53"
+            width="40"
+            height="40"
             viewBox="0 0 53 53"
             fill="none"
           >
@@ -27,15 +27,15 @@ const Navbar = () => {
             />
           </svg>
         </div>
-        <div id="logo" className="text-[#7E22CE] font-bold text-4xl">LAMA.</div>
+        <div id="logo" className="text-[#7E22CE] font-extrabold text-2xl">LAMA.</div>
       </div>
 
-      <div className="flex items-center gap-3 mt-5">
+      <div className="flex items-center gap-3">
         <div>
-          <IoIosSettings style={{ fontSize: "40px", color: "#3C3C3C" }} />
+          <IoIosSettings style={{ fontSize: "32px", color: "#3C3C3C" }} />
         </div>
         <div>
-          <FaRegBell style={{ fontSize: "30px", color: "#3C3C3C" }} />
+          <FaRegBell style={{ fontSize: "25px", color: "#3C3C3C" }} />
         </div>
       </div>
     </div>

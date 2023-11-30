@@ -4,9 +4,30 @@ import youtubeImage from "../Assets/youtube.png";
 import spotifyImage from "../Assets/spotify.png";
 import rssfield from "../Assets/rssfield.png";
 import ellipse from "../Assets/Ellipse.png";
+import { useDispatch } from "react-redux";
+import { createUpload } from "../redux/uploads/action";
 
 const UploadModal = ({ mediaName }) => {
   const { isuploadOpen, setIsUploadOpen } = useContext(CreateProjectContext);
+  const projectId = localStorage.getItem("projectId");
+  const [name,setName] = useState("");
+  const [description,setDescription] = useState("");
+  const dispatch = useDispatch();
+
+
+  const handleUpload = () =>{
+    const uploadFile = {
+      projectId,
+      name,
+      description
+    }
+
+    dispatch(createUpload(uploadFile));
+    setName("");
+    setDescription("");
+    setIsUploadOpen(false)
+  }
+
   return (
     <div className="fixed inset-0 overflow-y-auto">
       <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -56,8 +77,8 @@ const UploadModal = ({ mediaName }) => {
             <div className="mb-4 mt-4">
               <label className="block text-md  text-gray">Name:</label>
               <input
-                //   value={projectName}
-                //   onChange={(e)=>setProjectName(e.target.value)}
+                  value={name}
+                  onChange={(e)=>setName(e.target.value)}
                 type="text"
                 className="mt-1 p-2 w-full border border-[#000] rounded-lg focus:outline-none focus:border-[#000]"
               />
@@ -66,8 +87,8 @@ const UploadModal = ({ mediaName }) => {
             <div className="mb-4">
               <label className="block text-md  text-gray">Description:</label>
               <input
-                //   value={projectName}
-                //   onChange={(e)=>setProjectName(e.target.value)}
+                  value={description}
+                  onChange={(e)=>setDescription(e.target.value)}
                 type="text"
                 className="mt-1 p-2 w-full border border-[#000] rounded-lg focus:outline-none focus:border-[#000]"
               />
@@ -75,7 +96,7 @@ const UploadModal = ({ mediaName }) => {
           </div>
 
           <div className="flex justify-end gap-5 m-5">
-            <button className="px-7 py-2  bg-[#211935]  text-white rounded-md text-lg  text-extrabold">
+            <button onClick={handleUpload} className="px-7 py-2  bg-[#211935]  text-white rounded-md text-lg  text-extrabold">
               Upload
             </button>
           </div>

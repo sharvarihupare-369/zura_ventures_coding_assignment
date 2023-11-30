@@ -1,11 +1,37 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { CreateProjectContext } from '../Contexts/CreateProjectContextProvider';
+import {useDispatch, useSelector} from 'react-redux';
+import { createProjects, getallProjects } from '../redux/createProjects/action';
 
 const CreateProjectModal = () => {
   
     const {isModalOpen,setIsModalOpen} = useContext(CreateProjectContext);
-    const [projectName,setProjectName] = useState("")
-    
+    const [projectName,setProjectName] = useState("");
+    const dispatch = useDispatch();
+    const {isAdded,allProjects} = useSelector((store)=>store.projectReducer);
+    const handleSubmitProject = () => {
+       const projectObj = {
+          projectName
+       };
+       dispatch(createProjects(projectObj));
+       setProjectName("")
+    };
+
+    useEffect(()=>{
+      if(isAdded){
+        setIsModalOpen(false)
+        dispatch(getallProjects())
+      }
+    },[isAdded])
+
+   
+    useEffect(()=>{
+      
+    },[allProjects.length])
+
+
+
+
   return (
    <>
      <div className="fixed inset-0 overflow-y-auto">
@@ -34,11 +60,12 @@ const CreateProjectModal = () => {
           &times;
         </button>
 
+        {/* <form> */}
+
         <div className="p-6">
           <h1 className="text-xl font-semibold mb-4">
             Create  Project
           </h1>
-
           <div className="mb-4">
             <label className="block text-md  text-gray">
               Enter Project Name:
@@ -65,10 +92,16 @@ const CreateProjectModal = () => {
             className="px-3 py-1 font-bold text-red-600">
             Cancel
           </button>
-          <button className="px-3 py-1  bg-[#7E22CE] text-white rounded-lg  text-extrabold">
+          <button onClick={handleSubmitProject} className="px-3 py-1  bg-[#7E22CE] text-white rounded-lg  text-extrabold">
             Create
           </button>
         </div>
+         
+        {/* </form> */}
+
+
+
+
       </div>
     </div>
   </div>
