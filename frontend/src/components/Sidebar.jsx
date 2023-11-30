@@ -5,7 +5,7 @@ const Sidebar = () => {
   const navigate = useNavigate();
   return (
     <div>
-      <div className="border border-gray h-[100vh] p-2 bg-[#F3E8FF] ">
+      <div className="border border-gray min-h-screen p-2 bg-[#F3E8FF] ">
         <div>
           <div>
             <div className="flex items-center gap-2 w-[10px]">
