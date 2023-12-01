@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState ,useRef} from "react";
 import { CreateProjectContext } from "../Contexts/CreateProjectContextProvider";
 import youtubeImage from "../Assets/youtube.png";
 import spotifyImage from "../Assets/spotify.png";
@@ -9,17 +9,20 @@ import { createUpload, getuploads } from "../redux/uploads/action";
 
 const UploadModal = ({ mediaName }) => {
   const { isuploadOpen, setIsUploadOpen } = useContext(CreateProjectContext);
+  const loginDetails = JSON.parse(localStorage.getItem("lama-login-details")) || "";
   const projectId = localStorage.getItem("projectId");
   const [name, setName] = useState("");
+  const [email,setEmail] = useState("")
   const [description, setDescription] = useState("");
   const dispatch = useDispatch();
   const { isUploaded } = useSelector((store) => store.uploadReducer);
-
+  const localStorageLoaded = useRef(false);
   const handleUpload = () => {
     const uploadFile = {
       projectId,
       name,
       description,
+      email 
     };
 
     dispatch(createUpload(uploadFile));
@@ -27,6 +30,18 @@ const UploadModal = ({ mediaName }) => {
     setDescription("");
     setIsUploadOpen(false);
   };
+
+  useEffect(() => {
+    // Check if localStorage data is available
+    const storedLoginDetails = JSON.parse(localStorage.getItem("lama-login-details")) || "";
+    // console.log(storedLoginDetails);
+
+    // Update the state only if localStorage data is available
+    if (storedLoginDetails) {
+      setEmail(storedLoginDetails.email);
+      localStorageLoaded.current = true;
+    }
+  }, []);
 
   useEffect(() => {
     if (isUploaded) {

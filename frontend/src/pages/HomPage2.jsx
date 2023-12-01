@@ -9,13 +9,14 @@ import Loader from "../components/Loader";
 
 const HomPage2 = () => {
   const { isModalOpen, setIsModalOpen } = useContext(CreateProjectContext);
+  const loginDetails = JSON.parse(localStorage.getItem("lama-login-details")) || "";
   const { allProjects, isProjectLoading } = useSelector(
     (store) => store.projectReducer
   );
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { alluploads, isLoading } = useSelector((store) => store.uploadReducer);
+  const { alluploads, isLoading,isAdded } = useSelector((store) => store.uploadReducer);
   const projectId = localStorage.getItem("projectId");
   const filteredUploads = alluploads?.filter(
     (el) => el.projectId === projectId
@@ -29,6 +30,10 @@ const HomPage2 = () => {
   useEffect(() => {
     dispatch(getallProjects());
   }, []);
+
+  useEffect(()=>{
+    dispatch(getallProjects())
+  },[isAdded])
 
   return isLoading || isProjectLoading ? (
     <Loader />

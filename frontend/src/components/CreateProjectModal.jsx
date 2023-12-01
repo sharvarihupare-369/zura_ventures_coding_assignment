@@ -6,15 +6,36 @@ import { createProjects, getallProjects } from "../redux/createProjects/action";
 const CreateProjectModal = () => {
   const { isModalOpen, setIsModalOpen } = useContext(CreateProjectContext);
   const [projectName, setProjectName] = useState("");
+  const [email, setEmail] = useState("");
+  const loginDetails = JSON.parse(localStorage.getItem("lama-login-details")) || "";
+  // console.log(loginDetails)
+
+  const localStorageLoaded = useRef(false);
+  // console.log(email)
+
   const dispatch = useDispatch();
   const { isAdded, allProjects } = useSelector((store) => store.projectReducer);
   const handleSubmitProject = () => {
     const projectObj = {
       projectName,
+      email 
     };
+    // console.log(projectObj)
     dispatch(createProjects(projectObj));
     setProjectName("");
   };
+
+  useEffect(() => {
+   
+    const storedLoginDetails = JSON.parse(localStorage.getItem("lama-login-details")) || "";
+    console.log(storedLoginDetails);
+
+   
+    if (storedLoginDetails) {
+      setEmail(storedLoginDetails.email);
+      localStorageLoaded.current = true;
+    }
+  }, []);
 
   useEffect(() => {
     if (isAdded) {
