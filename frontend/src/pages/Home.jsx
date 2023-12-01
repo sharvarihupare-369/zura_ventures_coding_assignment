@@ -32,14 +32,18 @@ const Home = () => {
   //   return <Loader/>
   //  }
 
+ 
+
   useEffect(() => {
     if (!hasShownLoginDetails) {
       const timer = setTimeout(() => {
         setShowLoginDetails(true);
         localStorage.setItem("hasShownLoginDetails", "true");
+      
       }, 3000);
       return () => clearTimeout(timer);
     }
+   
   }, []);
 
   return (

@@ -4,14 +4,14 @@ import axios from 'axios';
 export const createGeneralConfig = (payload) => (dispatch) => {
   dispatch({type:CONFIG_REQUEST})
   axios.post('https://zura-ventures-backend.onrender.com/general/',payload).then((res)=>{
-    console.log(res)
+    // console.log(res)
    
     dispatch({type:CONFIG_ADD_NEW})
 
     localStorage.setItem("generalId",JSON.stringify(res.data.newInfo))
     
   }).catch((err)=>{
-    console.log(err)
+    // console.log(err)
     dispatch({type:CONFIG_FAILURE});
   })
 }
@@ -30,10 +30,10 @@ export const getGeneralConfig = () => (dispatch) => {
 export const  updateGeneralConfig = (id,payload) => (dispatch) => {
   dispatch({type:CONFIG_REQUEST})
   axios.put(`https://zura-ventures-backend.onrender.com/general/edit/${id}`,payload).then((res)=>{
-    console.log(res)
+    // console.log(res)
     dispatch({type:UPDATE_CONFIG})
   }).catch((err)=>{
-    console.log(err)
+    // console.log(err)
     dispatch({type:CONFIG_FAILURE});
   })
 }

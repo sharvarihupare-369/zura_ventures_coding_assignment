@@ -2,8 +2,23 @@ import React from "react";
 import { IoIosSettings } from "react-icons/io";
 import { FaRegBell } from "react-icons/fa";
 import arrowImg from "../Assets/arrow.png";
+import { CiLogout } from "react-icons/ci";
+import { useDispatch } from "react-redux";
+import { getallProjects } from "../redux/createProjects/action";
 
 const Navbar = () => {
+
+  
+const loginDetails = JSON.parse(localStorage.getItem("lama-login-details")) || "";
+const hasShownLoginDetails = localStorage.getItem("hasShownLoginDetails");
+const dispatch = useDispatch()
+  const handleLogout = () => {
+   if(loginDetails.email ){
+    localStorage.removeItem("lama-login-details");
+    localStorage.removeItem("hasShownLoginDetails")
+    window.location.reload()
+   }
+  }
   return (
     <div className="flex justify-between items-center m-5">
       <div className="flex items-center gap-2">
@@ -33,11 +48,14 @@ const Navbar = () => {
       </div>
 
       <div className="flex items-center gap-3">
+      <div style={{ fontSize: "32px", color: "#3C3C3C",cursor:"pointer" }}>
+     {loginDetails?.email ? <CiLogout onClick={handleLogout}/> : ""}
+      </div>
         <div>
-          <IoIosSettings style={{ fontSize: "32px", color: "#3C3C3C" }} />
+          <IoIosSettings style={{ fontSize: "32px", color: "#3C3C3C",cursor:"pointer" }} />
         </div>
         <div>
-          <FaRegBell style={{ fontSize: "25px", color: "#3C3C3C" }} />
+          <FaRegBell style={{ fontSize: "25px", color: "#3C3C3C",cursor:"pointer" }} />
         </div>
       </div>
     </div>

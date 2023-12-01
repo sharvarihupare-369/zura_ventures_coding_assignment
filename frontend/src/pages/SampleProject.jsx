@@ -169,7 +169,7 @@ const SampleProject = () => {
               });
 
               return (
-                <tr>
+                <tr key={el._id}>
                   <td className="py-2 px-4">{el?.name}</td>
                   <td className="py-2 px-4">
                     {formattedDate} | {formattedTime}

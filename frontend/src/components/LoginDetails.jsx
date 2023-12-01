@@ -1,12 +1,17 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { CreateProjectContext } from "../Contexts/CreateProjectContextProvider";
 import { FaLessThan } from "react-icons/fa6";
+import {  useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getallProjects } from "../redux/createProjects/action";
 
 const LoginDetails = () => {
   const { showLoginDetails, setShowLoginDetails } =
     useContext(CreateProjectContext);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   const handleSubmitProject = () => {
     const loginDetails = {
@@ -17,6 +22,7 @@ const LoginDetails = () => {
     setEmail("");
     setUsername("");
     setShowLoginDetails(false);
+    window.location.reload();
   };
 
   return (
