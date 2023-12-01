@@ -76,3 +76,6 @@ To start exploring and contributing to the LAMA Podcast Platform, follow these s
   - Start the Frontend (React):
      - cd ../frontend
      - npm start
+
+
+##### Happy coding! 🚀
