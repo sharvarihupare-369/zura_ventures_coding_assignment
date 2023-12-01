@@ -3,8 +3,10 @@ import Sidebar from "../components/Sidebar";
 import { CiSaveUp2 } from "react-icons/ci";
 import { FaCamera } from "react-icons/fa";
 import Navbar2 from "../components/Navbar2";
+import { useSelector } from "react-redux";
 
 const Account = () => {
+ 
   let loginDetails =
     JSON.parse(localStorage.getItem("lama-login-details")) || "";
   // console.log(loginDetails);
@@ -40,12 +42,14 @@ const Account = () => {
   };
 
   return (
-    <div className="flex gap-20">
-      <div className="w-[20%]">
+    <div className="flex gap-20 relative">
+      <div className="w-[20%] fixed left-0">
         <Sidebar />
       </div>
-      <div className="w-[80%]">
-      <Navbar2/>
+      <div className="w-[75%] absolute left-[26%] pr-3">
+      <div className="w-[92%]">
+       <Navbar2 />
+       </div>
         <p className="text-[#7E22CE] text-[40px] text-700 font-bold">
           Account Settings
         </p>
@@ -82,6 +86,7 @@ const Account = () => {
             )}
 
             <input
+            className="w-[20%] absolute"
               id="file-input"
               type="file"
               accept="image/*"

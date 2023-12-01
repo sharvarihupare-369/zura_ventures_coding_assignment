@@ -2,7 +2,7 @@ import { CREATE_PROJECTS, GET_PROJECTS, PROJECT_FAILURE, PROJECT_REQUEST } from 
 
 const initialState = {
     projectName : '',
-    isLoading : false,
+    isProjectLoading : false,
     isError : false,
     isAdded : false,
     allProjects : [],
@@ -13,7 +13,7 @@ export const reducer = (state=initialState,{type,payload}) => {
         case PROJECT_REQUEST : {
             return {
                 ...state,
-                isLoading : true,
+                isProjectLoading : true,
                 isError : false,
                 isAdded : false
             }
@@ -21,7 +21,7 @@ export const reducer = (state=initialState,{type,payload}) => {
         case PROJECT_FAILURE : {
             return {
                 ...state,
-                isLoading : false,
+                isProjectLoading : false,
                 isError : true,
                 isAdded : false
             }
@@ -29,7 +29,7 @@ export const reducer = (state=initialState,{type,payload}) => {
         case GET_PROJECTS : {
             return {
                 ...state,
-                isLoading : false,
+                isProjectLoading : false,
                 isError : false,
                 allProjects : payload
             }
@@ -37,7 +37,7 @@ export const reducer = (state=initialState,{type,payload}) => {
         case CREATE_PROJECTS : {
             return {
                 ...state,
-                isLoading : false,
+                isProjectLoading : false,
                 isError : false,
                 isAdded : true
             }

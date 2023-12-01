@@ -9,11 +9,13 @@ import Loader from "../components/Loader";
 
 const HomPage2 = () => {
   const { isModalOpen, setIsModalOpen } = useContext(CreateProjectContext);
-  const { allProjects } = useSelector((store) => store.projectReducer);
+  const { allProjects, isProjectLoading } = useSelector(
+    (store) => store.projectReducer
+  );
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { alluploads ,isLoading} = useSelector((store) => store.uploadReducer);
+  const { alluploads, isLoading } = useSelector((store) => store.uploadReducer);
   const projectId = localStorage.getItem("projectId");
   const filteredUploads = alluploads?.filter(
     (el) => el.projectId === projectId
@@ -28,17 +30,9 @@ const HomPage2 = () => {
     dispatch(getallProjects());
   }, []);
 
-  // console.log(allProjects)
-
-  // useEffect(()=>{
-
-  // },[allProjects.length]);
-
- 
-//  if(isLoading){
-//     return <Loader/>
-//    }
-  return (
+  return isLoading || isProjectLoading ? (
+    <Loader />
+  ) : (
     <div>
       <div className="flex justify-between m-3">
         <div>
@@ -61,7 +55,7 @@ const HomPage2 = () => {
 
       {/*projects map here */}
       <div className="w-[75%]  m-auto grid grid-cols-3 gap-x-20">
-        {allProjects.length &&
+        {allProjects?.length &&
           allProjects?.map((project) => {
             const initialOfName = project?.projectName
               ?.split(" ")
@@ -73,7 +67,7 @@ const HomPage2 = () => {
               <div
                 onClick={() => navigateToUpload(project?._id)}
                 className="cursor-pointer mt-[50px] border border-gray-300 shadow-[0px 0px 0px 0px rgba(0, 0, 0, 0.06), 1.18953px 2.37906px 5.94764px 0px rgba(0, 0, 0, 0.06), 4.75811px 9.51622px 10.70575px 0px rgba(0, 0, 0, 0.05), 10.70575px 21.41151px 14.27434px 0px rgba(0, 0, 0, 0.03), 19.03245px 38.0649px 16.65339px 0px rgba(0, 0, 0, 0.01), 29.7382px 58.28688px 19.03245px 0px rgba(0, 0, 0, 0.00);
-          ] rounded-[10px] inline-block px-2 py-2"
+      ] rounded-[10px] inline-block px-2 py-2"
               >
                 <div className="flex gap-4 ">
                   <div className="bg-[#7E22CE] inline-block rounded-md">

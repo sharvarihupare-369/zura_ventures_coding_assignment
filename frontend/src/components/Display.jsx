@@ -9,7 +9,7 @@ const Display = () => {
           <p className="text-[#3C3C3C] font-bold mb-2">Primary Color</p>
           <input
             // placeholder="colorCode"
-            className="border border-gray-300 p-2 rounded-md w-[70%]"
+            className="border border-gray-300 p-2 rounded-md w-[70%] focus:outline-sky-500"
           />
           <p className="text-[#646464] text-[10px]">
             Lorem ipsuim dolor sit Lorem ipsuim dolor sit
@@ -19,7 +19,7 @@ const Display = () => {
           <p className="text-[#3C3C3C] font-bold mb-2">Font Color</p>
           <input
             // placeholder="colorCode"
-            className="border border-gray-300 p-2 rounded-md  w-[70%]"
+            className="border border-gray-300 p-2 rounded-md  w-[70%] focus:outline-sky-500"
           />
           <p className="text-[#646464] text-[10px]">
             Lorem ipsuim dolor sit Lorem ipsuim dolor sit
@@ -32,7 +32,7 @@ const Display = () => {
           <p className="text-[#3C3C3C] font-bold mb-2">Font Size(in px)</p>
           <input
             // placeholder="colorCode"
-            className="border border-gray-300 p-2 rounded-md w-[80%]"
+            className="border border-gray-300 p-2 rounded-md w-[80%] focus:outline-sky-500"
           />
           <p className="text-[#646464] text-[10px]">
             Lorem ipsuim dolor sit Lorem ipsuim dolor sit
@@ -44,7 +44,7 @@ const Display = () => {
           </p>
           <input
             // placeholder="colorCode"
-            className="border border-gray-300 p-2 rounded-md w-[80%]"
+            className="border border-gray-300 p-2 rounded-md w-[80%] focus:outline-sky-500"
           />
           <p className="text-[#646464] text-[10px]">
             Lorem ipsuim dolor sit Lorem ipsuim dolor sit
@@ -85,14 +85,14 @@ const Display = () => {
           <p className="text-[#3C3C3C] font-bold mb-2">Chat Icon Size</p>
           <input
             // placeholder="colorCode"
-            className="border border-gray-300 p-2 rounded-md w-[80%]"
+            className="border border-gray-300 p-2 rounded-md w-[80%] focus:outline-sky-500"
           />
         </div>
         <div className="w-full">
           <p className="text-[#3C3C3C] font-bold">Position on Screen</p>
           <input
             // placeholder="colorCode"
-            className="border border-gray-300 p-2 rounded-md w-[80%]"
+            className="border border-gray-300 p-2 rounded-md w-[80%] focus:outline-sky-500"
           />
         </div>
       </div>
@@ -104,7 +104,7 @@ const Display = () => {
           </p>
           <input
             // placeholder="colorCode"
-            className="border border-gray-300 p-2 rounded-md w-[80%]"
+            className="border border-gray-300 p-2 rounded-md w-[80%] focus:outline-sky-500"
           />
         </div>
         <div className="w-full">
@@ -113,7 +113,7 @@ const Display = () => {
           </p>
           <input
             // placeholder="colorCode"
-            className="border border-gray-300 p-2 rounded-md w-[80%]"
+            className="border border-gray-300 p-2 rounded-md w-[80%] focus:outline-sky-500"
           />
         </div>
       </div>

@@ -68,7 +68,7 @@ const Sidebar = () => {
 
           <div className="border border-gray-300 mb-2"></div>
           <div
-            className="absolute bottom-0 mb-3 w-[18%] p-2 rounded-full hover:bg-[#7E22CE] hover:text-white "
+            className="absolute bottom-0  mb-3  w-[92%] p-2 rounded-full hover:bg-[#7E22CE] hover:text-white "
             onClick={() => navigate("/accounts/settings")}
           >
             <div className="flex justify-left items-center gap-3 mt-[10] ">

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Loader = () => {
   return (
-    <div className='flex justify-center mt-40'><span class="loader"></span></div>
+    <div className='h-[100vh] grid place-items-center'><span class="loader"></span></div>
   )
 }
 
