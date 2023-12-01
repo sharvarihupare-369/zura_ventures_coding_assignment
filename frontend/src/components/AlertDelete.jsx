@@ -12,6 +12,7 @@ function AlertDelete({ deleteId }) {
   const handleDeletePodcast = () => {
     dispatch(deleteupload(deleteId));
     // dispatch(getuploads());
+    window.location.reload()
   };
 
   useEffect(() => {
